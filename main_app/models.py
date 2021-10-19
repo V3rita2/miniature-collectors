@@ -14,3 +14,12 @@ class Army(models.Model):
 
     class Meta:
         ordering = ['name']
+
+class Mini(models.Model):
+
+    name = models.CharField(max_length=150)
+    price = models.IntegerField(default=0)
+    army = models.ForeignKey(Army, on_delete=models.CASCADE, related_name='Miniatures')
+
+    def __str__(self):
+        return self.title

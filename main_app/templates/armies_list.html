@@ -5,6 +5,18 @@
 {% block content %} 
     
 <h1 class ='title pt-5'>Popular Armies</h1>
+
+<form class='mb-5' method='get'>
+    <div class='field has-addons'>
+        <div class='control'>
+            <input class='input' type='text' name='name' placeholder='name' />
+        </div>
+        <div class='control'>
+            <input class='button is-success' type='submit' value='search' />
+        </div>
+    </div>
+    <a class='button is-dark' href="{% url 'armies_list' %}">Clear Search</a>
+</form>
 <div class="gallery">
     {% for army in armies %} 
     <a href = "">
