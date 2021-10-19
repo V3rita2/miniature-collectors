@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView
 # models imports
 from .models import Army
 
@@ -24,3 +25,12 @@ class ArmiesList(TemplateView):
             context["armies"] = Army.objects.all()
             context["header"] = "Popular Armies"
         return context
+
+class About(TemplateView):
+    template_name = 'about.html'
+
+class ArmyCreate(CreateView):
+    model = Army
+    fields = ['name', 'image', 'desc']
+    template_name = "army_create.html"
+    success_url = "/armies/"
