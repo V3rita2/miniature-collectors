@@ -15,5 +15,12 @@ class ArmiesList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["armies"] = Army.objects.all()
+        name = self.request.GET.get("name")
+
+        if name != None:
+            context["armies"] = Army.objects.filter(name__icontains=name)
+            context["header"] = f"Searching for {name}"
+        else:
+            context["armies"] = Army.objects.all()
+            context["header"] = "Popular Armies"
         return context
