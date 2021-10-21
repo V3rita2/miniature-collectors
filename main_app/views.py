@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
@@ -33,4 +33,13 @@ class ArmyCreate(CreateView):
     model = Army
     fields = ['name', 'image', 'desc']
     template_name = "army_create.html"
+
+    def form_valid(self, form):
+        # form.instance.user = self.request.user
+        return super(ArmyCreate, self).form_valid(form)
+
+    # def get_success_url(self):
+    #     print(self.kwargs)
+    #     return reverse('armies_list', kwargs={'pk': self.object.pk})
+
     success_url = "/armies/"
