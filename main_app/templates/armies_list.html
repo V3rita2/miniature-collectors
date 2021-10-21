@@ -20,7 +20,7 @@
 </form>
 <div class="gallery">
     {% for army in armies %} 
-    <a href = "">
+    <a href = "{% url 'army_detail' army.pk %}">
         <div class="card">
             <div class="card-image">
                 <figure class="image is-square">
