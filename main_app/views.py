@@ -3,6 +3,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 # models imports
 from .models import Army
 
@@ -43,3 +44,7 @@ class ArmyCreate(CreateView):
     #     return reverse('armies_list', kwargs={'pk': self.object.pk})
 
     success_url = "/armies/"
+
+class ArmyDetail(DetailView):
+    model = Army
+    template_name = "army_detail.html"
