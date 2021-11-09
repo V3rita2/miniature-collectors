@@ -6,6 +6,24 @@
   <h1 class="title">{{army.name}}</h1>
 </div>
 <div class="detail__container">
+  <div class="detail_minis mb-5">
+    <h3 class="title is-3">Models</h3>
+
+    {% for mini in army.minis.all %} 
+    <div class="mini">
+      <span>{{forloop.counter}}</span>
+      <span><b>{{mini.name}}</b></span>
+      <span>{{mini.price}}</span>
+    </div>
+    {% empty %} 
+    <article class="message">
+      <div class="message-header">
+        <p>No Models Available</p>
+      </div>
+    </article>
+
+    {% endfor %}
+  </div>
   <div class="buttons">
     <a href="{% url 'army_update' army.pk %}" class="button is-info">
       <span class="icon">

@@ -22,4 +22,9 @@ class Mini(models.Model):
     army = models.ForeignKey(Army, on_delete=models.CASCADE, related_name='Miniatures')
 
     def __str__(self):
-        return self.title
+        return self.name
+
+# class Roster(models.Model):
+
+#     title = models.CharField(max_length=150)
+
